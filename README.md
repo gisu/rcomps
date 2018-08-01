@@ -41,3 +41,6 @@ However, you are even more flexible if you can define breakpoints directly at th
 
 ## License
 MIT
+
+## Thanks 
+To Philip Walton @philipwalton
