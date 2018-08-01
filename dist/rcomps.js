@@ -4,7 +4,7 @@
 
 import ResizeObserver from 'resize-observer-polyfill';
 
-export default function(breakpoints) {
+export default (breakpoints) => {
   let defaultBreakpoints = typeof breakpoints === 'object' 
     ? breakpoints 
     : { xs: 320, sm: 560, m: 768, l: 960, xl: 1200 };
@@ -54,47 +54,6 @@ export default function(breakpoints) {
     });
   });
   mo.observe(document.body, { childList: true, subtree: true });
-
-  // Initialize the <responsive-container> custom elements.
-  function ResponsiveContainer() {
-    return typeof Reflect === 'object'
-      ? Reflect.construct(HTMLElement, [], ResponsiveContainer)
-      : HTMLElement.call(this) || this;
-  }
-  ResponsiveContainer.prototype = Object.create(HTMLElement.prototype, {
-    constructor: {
-      value: ResponsiveContainer
-    },
-    connectedCallback: {
-      value: () => {
-        const breakpointsAttr = this.getAttribute('breakpoints');
-        this.breakpoints = breakpointsAttr ? JSON.parse(breakpointsAttr) : defaultBreakpoints;
-
-        ro.observe(this);
-        this.setAttribute('observing', '');
-      }
-    },
-    updateBreakpoints: {
-      value: (width) => {
-        if (width > 0) {
-          this.setAttribute('observing', '');
-        } else {
-          this.removeAttribute('observing');
-        }
-
-        for (let breakpoint in this.breakpoints) {
-          const minWidth = this.breakpoints[breakpoint];
-          if (width >= minWidth) {
-            this.classList.add(breakpoint);
-          } else {
-            this.classList.remove(breakpoint);
-          }
-        }
-      }
-    }
-  });
-
-  self.customElements.define('responsive-container', ResponsiveContainer);
 
   // Iterates through a subtree
   function eachObserveableElement(nodes, fn) {
