@@ -1,0 +1,22 @@
+{
+  "name": "rcomps",
+  "version": "1.0.0",
+  "description": "Based on responsive-components from Philip Walton, as NPM Module",
+  "homepage": "https://github.com/gisu/rcomps#readme",
+  "main": "./dist/rcomps.js",
+  "keywords": [
+    "containerqueries",
+    "responsive",
+    "elementqueries",
+    "css"
+  ],
+  "author": "Sascha Fuchs",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gisu/rcomps.git"
+  },
+  "dependencies": {
+    "resize-observer-polyfill": "^1.5.0"
+  }
+}
