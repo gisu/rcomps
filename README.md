@@ -15,6 +15,11 @@ The simplest method is to mark the component with the tag `data-observe-resizes`
 <div data-observe-resizes>
   <div class="component">...</div>
 </div>
+
+<!-- Result -->
+<div class="xs sm" data-observe-resizes>
+  <div class="component">...</div>
+</div>
 ```
 In this case, the predefined breakpoints are used (`xs: 320, sm: 560, m: 768, l: 960, xl: 1200`). You can overwrite the breakpoints with a new object - important here is to specify the breakpoints in px.
 
@@ -26,6 +31,12 @@ However, you are even more flexible if you can define breakpoints directly at th
 
 ```html
 <div data-observe-resizes
+     data-breakpoints='{"break1":500,"break2":1000}'>
+  <div class="component">...</div>
+</div>
+
+<!-- Result -->
+<div class="break1" data-observe-resizes
      data-breakpoints='{"break1":500,"break2":1000}'>
   <div class="component">...</div>
 </div>

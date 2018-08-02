@@ -1,6 +1,6 @@
 {
   "name": "rcomps",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Based on responsive-components from Philip Walton, as NPM Module",
   "homepage": "https://github.com/gisu/rcomps#readme",
   "main": "./dist/rcomps.js",
