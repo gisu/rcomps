@@ -30,14 +30,33 @@ rcomps({"break1": 500, "break2": 1000})
 However, you are even more flexible if you can define breakpoints directly at the component. Nice side effect, you can also trigger utility classes (e.g. from tailwind) via the breakpoints.
 
 ```html
-<div data-observe-resizes
-     data-breakpoints='{"break1":500,"break2":1000}'>
+<div class="wrapper" data-observe-resizes
+     data-breakpoints='{"break1": 300, "break2": 600, "break3": 800, "break4": 1000}'>
   <div class="component">...</div>
 </div>
 
 <!-- Result -->
-<div class="break1" data-observe-resizes
-     data-breakpoints='{"break1":500,"break2":1000}'>
+<div class="wrapper break1 break2 break3" data-observe-resizes
+     data-breakpoints='{"break1": 300, "break2": 600, "break3": 800, "break4": 1000}'>
+  <div class="component">...</div>
+</div>
+```
+
+If you use utility classes, you can trigger them individually, depending on the breakpoint. Adding the data attribute `data-utility` adds only one class at a time. This avoids the order around CSS when it comes to overwriting the declarations.
+
+```html
+<div class="wrapper"
+     data-observe-resizes
+     data-utility
+     data-breakpoints='{"bg-green": 300, "bg-red": 600, "bg-blue": 800, "bg-yellow": 1000}'>
+  <div class="component">...</div>
+</div>
+
+<!-- Result -->
+<div class="wrapper bg-blue" 
+     data-utility
+     data-observe-resizes
+     data-breakpoints='{"bg-green": 300, "bg-red": 600, "bg-blue": 800, "bg-yellow": 1000}'>
   <div class="component">...</div>
 </div>
 ```

@@ -18,6 +18,9 @@ export default (breakpoints) => {
           ? JSON.parse(entry.target.dataset.breakpoints)
           : defaultBreakpoints;
 
+        // Put Breakpoints in a array
+        const breakpointArr = Object.keys(breakpoints);
+
         // For non-custom-elements, use the data-obsevering attribute
         // to target observed elements in CSS.
         if (entry.width === 0) {
@@ -30,7 +33,10 @@ export default (breakpoints) => {
         Object.keys(breakpoints).forEach((breakpoint) => {
           const minWidth = breakpoints[breakpoint];
           if (entry.contentRect.width >= minWidth) {
-            entry.target.classList.add(breakpoint);
+            // Clean up the classlist if only one class of the object may be active
+            if (entry.target.hasAttribute('data-utility'))
+              entry.target.classList.remove(...breakpointArr);
+            entry.target.classList.add(breakpoint)
           } else {
             entry.target.classList.remove(breakpoint);
           }
