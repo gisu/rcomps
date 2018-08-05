@@ -34,8 +34,9 @@ export default (breakpoints) => {
           const minWidth = breakpoints[breakpoint];
           if (entry.contentRect.width >= minWidth) {
             // Clean up the classlist if only one class of the object may be active
-            if (entry.target.hasAttribute('data-utility'))
+            if (entry.target.hasAttribute('data-utility')) {
               entry.target.classList.remove(...breakpointArr);
+            }
             entry.target.classList.add(breakpoint)
           } else {
             entry.target.classList.remove(breakpoint);
@@ -78,4 +79,3 @@ export default (breakpoints) => {
     }
   }
 };
- 
