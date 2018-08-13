@@ -2,7 +2,7 @@
 *   ResponsiveComponents
 */
 
-import ResizeObserver from 'resize-observer-polyfill';
+const ResizeObserver = require('resize-observer-polyfill');
 
 export default (breakpoints) => {
   let defaultBreakpoints = typeof breakpoints === 'object' 
