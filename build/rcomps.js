@@ -5,6 +5,10 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.rcomps = void 0;
 
+var _resizeObserverPolyfill = _interopRequireDefault(require("resize-observer-polyfill"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
 
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
@@ -15,9 +19,6 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-/*!
- *   ResponsiveComponents
- */
 var rcomps = function rcomps(breakpoints) {
   var defaultBreakpoints = _typeof(breakpoints) === 'object' ? breakpoints : {
     xs: 320,
@@ -26,7 +27,7 @@ var rcomps = function rcomps(breakpoints) {
     l: 960,
     xl: 1200
   };
-  var ro = new ResizeObserver(function (entries) {
+  var ro = new _resizeObserverPolyfill["default"](function (entries) {
     entries.forEach(function (entry) {
       if (entry.target.updateBreakpoints) {
         entry.target.updateBreakpoints(entry.contentRect.width);
