@@ -1,9 +1,9 @@
 {
   "name": "rcomps",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Based on responsive-components from Philip Walton, as NPM Module",
   "homepage": "https://github.com/gisu/rcomps#readme",
-  "main": "./build/rcomps.js",
+  "main": "./dist/rcomps.js",
   "keywords": [
     "containerqueries",
     "responsive",
